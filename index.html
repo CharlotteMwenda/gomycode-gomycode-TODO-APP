@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Supabase Todo • Cloud Sync</title>
+  <!-- Google Fonts & simple CSS reset (main CSS will be linked separately) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container" id="appRoot">
+    <!-- Auth Card (signup / signin) -->
+    <div id="authSection" class="auth-card">
+      <div class="brand">
+        <span class="logo">✓✗</span>
+        <h1>TaskFlow</h1>
+        <p>sign in to sync your todos</p>
+      </div>
+      <div class="auth-tabs">
+        <button class="tab-btn active" data-auth-tab="login">Sign in</button>
+        <button class="tab-btn" data-auth-tab="signup">Create account</button>
+      </div>
+      
+      <!-- Login form -->
+      <form id="loginForm" class="auth-form active-form">
+        <div class="input-group">
+          <label>Email</label>
+          <input type="email" id="loginEmail" placeholder="you@example.com" required>
+        </div>
+        <div class="input-group">
+          <label>Password</label>
+          <input type="password" id="loginPassword" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn-primary full-width">Sign in →</button>
+        <div class="auth-message" id="loginMessage"></div>
+      </form>
+      
+      <!-- Signup form -->
+      <form id="signupForm" class="auth-form">
+        <div class="input-group">
+          <label>Email</label>
+          <input type="email" id="signupEmail" placeholder="you@example.com" required>
+        </div>
+        <div class="input-group">
+          <label>Password (min 6 chars)</label>
+          <input type="password" id="signupPassword" placeholder="create a password" required>
+        </div>
+        <button type="submit" class="btn-primary full-width">Create account →</button>
+        <div class="auth-message" id="signupMessage"></div>
+      </form>
+    </div>
+
+    <!-- MAIN TODO APP (visible only after auth) -->
+    <div id="todoApp" class="todo-main hidden">
+      <div class="todo-header">
+        <div class="user-info">
+          <span class="greeting">📋 Hello, <span id="userEmailDisplay">user</span></span>
+          <button id="logoutBtn" class="logout-btn">Sign out</button>
+        </div>
+        <h2>your tasks <span class="task-counter" id="taskCounter">0</span></h2>
+      </div>
+
+      <!-- Add task input -->
+      <div class="add-task-row">
+        <input type="text" id="newTaskInput" placeholder="Write a new task... (press Enter)" autocomplete="off">
+        <button id="addTaskBtn" class="add-btn">+ Add</button>
+      </div>
+
+      <!-- Filter tabs -->
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="active">Active</button>
+        <button class="filter-btn" data-filter="completed">Completed</button>
+        <button id="clearCompletedBtn" class="clear-completed">Clear completed</button>
+      </div>
+
+      <!-- tasks list -->
+      <ul id="todoList" class="todo-list"></ul>
+      <div class="empty-state" id="emptyState">✨ No tasks here. Add your first one!</div>
+    </div>
+  </div>
+
+  <!-- Supabase JS library -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- main app script -->
+  <script src="script.js"></script>
+</body>
+</html>
