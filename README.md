@@ -1,8 +1,6 @@
 Todo List Web App - AI Assisted Development
-A modern, responsive Todo List application built with HTML, CSS, and JavaScript, featuring local storage persistence, task management, and a clean user interface. This project was developed collaboratively with ChatGPT following an iterative AI-assisted development workflow.
 
-🌟 Live Demo
-View Live Project
+A modern, responsive Todo List application built with HTML, CSS, and JavaScript, featuring local storage persistence, task management, and a clean user interface. This project was developed collaboratively with ChatGPT following an iterative AI-assisted development workflow.
 
 ✨ Features
 ✅ Add new tasks with enter key or button click
